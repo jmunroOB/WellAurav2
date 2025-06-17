@@ -1,7 +1,7 @@
 import express from "express";
 import { ENV } from "./config/env.js";
 import { db } from "./config/db.js";
-import { favoriteRecipesTable } from "./db/schema.js";
+import { favouriteRecipesTable } from "./db/schema.js";
 
 const app = express();
 const PORT = ENV.PORT || 8081;
@@ -12,8 +12,14 @@ app.get("/api/health", (req, res) => {
     res.status(200).json({ success: true });
 });
 
-app.post("/api/favoriteRecipes", async (req, res) => {
+app.post("/api/favouriteRecipes", async (req, res) => {
+
+    
+    
     try {
+
+        res.status(200).json({ success: true });
+         /*
         const { userId, recipeId, title, image, cookTime, servings } = req.body;
 
         if(!userId || !recipeId || !title) {
@@ -31,7 +37,9 @@ app.post("/api/favoriteRecipes", async (req, res) => {
         
         .returning();
         
-        res.status(201).json(newFavoriteRecipe[0])
+        res.status(201).json(newFavoriteRecipe[0]);
+
+        */
 
     } catch (error) {
         console.log("Error adding favorite", error)
