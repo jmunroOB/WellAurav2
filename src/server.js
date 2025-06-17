@@ -12,7 +12,7 @@ app.get("/api/health", (req, res) => {
     res.status(200).json({ success: true });
 });
 
-app.post("/api/favouriteRecipes", async (req, res) => {
+app.post("/api/favoriteRecipes", async (req, res) => {
     try {
         const { userId, recipeId, title, image, cookTime, servings } = req.body;
 
