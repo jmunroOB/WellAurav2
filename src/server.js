@@ -12,14 +12,8 @@ app.get("/api/health", (req, res) => {
     res.status(200).json({ success: true });
 });
 
-app.get("/api/favouriteRecipes", async (req, res) => {
-
-    
-    
+app.post("/api/favouriteRecipes", async (req, res) => {
     try {
-
-        res.status(200).json({ success: true });
-         /*
         const { userId, recipeId, title, image, cookTime, servings } = req.body;
 
         if(!userId || !recipeId || !title) {
@@ -37,9 +31,7 @@ app.get("/api/favouriteRecipes", async (req, res) => {
         
         .returning();
         
-        res.status(201).json(newFavoriteRecipe[0]);
-
-        */
+        res.status(201).json(newFavoriteRecipe[0])
 
     } catch (error) {
         console.log("Error adding favorite", error)
