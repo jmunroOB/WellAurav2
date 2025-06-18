@@ -23,7 +23,7 @@ app.post("/api/favouriteRecipes", async (req, res) => {
             return res.status(400).json({ error: "Missing required fields" });
         }
 
-        const newFavoriteRecipe = await db.insert(favoriteRecipesTable).values({
+        const newFavouriteRecipe = await db.insert(favouriteRecipesTable).values({
             userId,
             recipeId,
             title,
@@ -34,7 +34,7 @@ app.post("/api/favouriteRecipes", async (req, res) => {
         
         .returning();
         
-        res.status(201).json(newFavoriteRecipe[0])
+        res.status(201).json(newFavouriteRecipe[0])
 
     } catch (error) {
         console.log("Error adding favorite", error)
@@ -50,7 +50,7 @@ app.delete("/api/favouriteRecipes/:userId/:recipeId", async(req,res) => {
        await db
        .delete(favoriteRecipesTable)
        .where(
-        and(eq(favoriteRecipesTable.userId,userId), eq(favoriteRecipesTable.recipeId, parseInt(recipeId)))
+        and(eq(favouriteRecipesTable.userId,userId), eq(favouriteRecipesTable.recipeId, parseInt(recipeId)))
        )
 
        res.status(200).json({ message: "Favorite removed successfully" });
@@ -65,9 +65,9 @@ app.get("/api/favouriteRecipes/:userId", async(req, res) => {
     try {
         const { userId } = req.params;
 
-        await db.select().from(favoriteRecipesTable).where(eq(favoriteRecipesTable.userId,userId))
+        await db.select().from(favouriteRecipesTable).where(eq(favouriteRecipesTable.userId,userId))
 
-        res.status(200).json(userFavoriteRecipes)
+        res.status(200).json(userFavouriteRecipes)
         
     } catch (error) {
         console.log("Error fetching favorite", error)
